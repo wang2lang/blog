@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>no-layout-sass介绍一 by rainjay</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>no-layout-sass介绍一</h1>
+          <h2>no-layout-sass  sass</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/rainjay/blog/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/rainjay/blog/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/rainjay/blog" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <p>拿JQuery和Angular.js做一个对比的话，Angular是一个框架，而JQuery则是一个库。Angular封装了底层的操作，并为用户提供完整的接口。而JQuery则是基于底层操作，但是让底层操作更加轻松和容易，相当于语法糖。</p>
+
+<p>no-layout-sass相比于Bootstrap这种框架而言，更像是一个库。Bootstrap给用户提供了一系列类名和方法，用户可以在完全不写任何CSS的情况下实现一定的界面。no-layout.sass没有给用户提供一系列用法，而是封装了CSS很多常用语法，帮助你更轻松地写出想要的CSS代码，最大化地复用代码。</p>
+
+<p>no-layout-sass核心内容包括：</p>
+
+<ul>
+<li>flexbox布局（处理了浏览器兼容问题）<a href="http://caniuse.com/#search=flex">查看浏览器对flex布局支持程度</a>
+</li>
+<li>
+<p>常见的Mixins</p>
+
+<ul>
+<li>+clearfix (<a href="https://github.com/extend" class="user-mention">@extend</a> %clearfix is better)</li>
+<li>+abs-pos($top, $right, $bottom, $left)   //absolute position</li>
+<li>+bg-variant($color)   //hover background variant (darken 10%)</li>
+<li>+text-truncate (<a href="https://github.com/extend" class="user-mention">@extend</a> %text-truncate is better)    //overflow: hidden; text-overflow: ellipsis; white-space: nowrap;</li>
+<li>+border-top-radius($value), +border-right-radius($value), +border-bottom-radius($value), +border-left-radius($value)</li>
+<li>+border-triangle($borderWidth, $borderColor, $directive)</li>
+<li>+device-retina   //classes work for retina device (<a href="https://github.com/media" class="user-mention">@media</a>)</li>
+<li>+device-normal   //classes work for normal device (<a href="https://github.com/media" class="user-mention">@media</a>)</li>
+<li>+retina-border-1px($color, $direction)   //get 1px 'border' for retina device (only one border)</li>
+<li>+device-border-none   //hide boder created by +retina-border-1px</li>
+<li>+font-face($fontName, $noSuffixFontUrl)   //compatible font-face</li>
+<li>+transform($value)</li>
+<li>+transform-origin($value)</li>
+<li>+animation($value)</li>
+<li>+animation-timing-function($value)</li>
+<li>+keyframes($name)    //refer to 'mixins/css3.sass'</li>
+<li>+box-sizing($value) (<a href="https://github.com/extend" class="user-mention">@extend</a> %box-sizing-border and %box-sizing-content is better)</li>
+<li>+box-shadow($param)</li>
+<li>+placeholder($color)</li>
+<li>+user-select($model: text)</li>
+<li>+backface-visibility($value: visible)</li>
+<li>+perspective($value: none)</li>
+<li>+perspective-origin($origin: 50% 50%)</li>
+<li>+opacity($opacity)</li>
+<li>+background-size($size)</li>
+<li>+background-origin($model: border-box)</li>
+<li>+background-clip($model: border-box)</li>
+<li>+radial-gradient($arguments)</li>
+<li>+linear-gradient($arguments)</li>
+</ul>
+</li>
+<li>
+<p>常使用的功能</p>
+
+<ul>
+<li>.clearfix | %clearfix</li>
+<li>.box-sizing-border, .box-sizing-content | %box-sizing-border, %box-sizing-content</li>
+<li>.pull-left, .pull-right</li>
+<li>.hide, .show    //display: none, display: block</li>
+<li>.visible, .invisible    //visibility: visible, visibility: hidden</li>
+<li>.ul-reset | %ul-reset    //margin: 0; padding: 0; list-style: none</li>
+<li>.text-truncate | %text-truncate</li>
+<li>.text-align-center, .text-align-right, .text-align-left</li>
+<li>.vertical-align-middle</li>
+<li>%drop-back   //drop back for modals or something like modal</li>
+<li>.mt0 ~ .mt30, .mr0 ~ .mr30, .mb0 ~ .mb30, .ml0 ~ .ml30    //the most frequently used margin (with !important)</li>
+<li>.pt0 ~ .pt30, .pr0 ~ .pr30, .pb0 ~ .pb30, .pl0 ~ .pl30    //the most frequently used padding (with !important)</li>
+</ul>
+</li>
+</ul>
+
+<p>项目地址：<a href="https://github.com/rainjay/no-layout-sass">no-layout-sass</a></p>
+
+<p>安装：</p>
+
+<pre><code>npm install no-layout-sass
+</code></pre>
+
+<p>使用：将no-layout.sass文件引入你的sass主文件里。</p>
+
+<pre><code>@import 'sass/no-layout.sass'
+</code></pre>
+
+<p>下面介绍no-layout.sass中flex布局用法:</p>
+
+<h4>
+<a id="公用css部分" class="anchor" href="#%E5%85%AC%E7%94%A8css%E9%83%A8%E5%88%86" aria-hidden="true"><span class="octicon octicon-link"></span></a>公用css部分</h4>
+
+<pre><code>body
+  padding: 36px
+
+.demo-container
+  margin: 10px auto 20px
+  padding: 10px 15px
+  background-color: #ccc
+
+.height-200
+  height: 200px
+
+.one,
+.two,
+.three
+  margin: 5px 10px
+  padding: 5px 10px
+  background-color: #fff
+</code></pre>
+
+<h4>
+<a id="1-horizontal设置容器布局环境为flex容器内子元素水平排列子元素默认会朝着堆叠开始地方堆叠" class="anchor" href="#1-horizontal%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AE%B9%E5%99%A8%E5%86%85%E5%AD%90%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E6%8E%92%E5%88%97%E5%AD%90%E5%85%83%E7%B4%A0%E9%BB%98%E8%AE%A4%E4%BC%9A%E6%9C%9D%E7%9D%80%E5%A0%86%E5%8F%A0%E5%BC%80%E5%A7%8B%E5%9C%B0%E6%96%B9%E5%A0%86%E5%8F%A0" aria-hidden="true"><span class="octicon octicon-link"></span></a>1、 .horizontal设置容器布局环境为flex，容器内子元素水平排列(子元素默认会朝着堆叠开始地方堆叠)</h4>
+
+<pre><code>&lt;div class="horizontal demo-container"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>效果为
+{}<img src="/content/images/2015/02/1.png" alt="alt"></p>
+
+<h4>
+<a id="2-inline-horizontal-设置容器布局环境为inline-flex同时子元素水平排列" class="anchor" href="#2-inline-horizontal-%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAinline-flex%E5%90%8C%E6%97%B6%E5%AD%90%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E6%8E%92%E5%88%97" aria-hidden="true"><span class="octicon octicon-link"></span></a>2、 .inline-horizontal, 设置容器布局环境为inline-flex,同时子元素水平排列。</h4>
+
+<pre><code>  &lt;div class="inline-horizontal demo-container"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果为:
+{}<img src="/content/images/2015/03/2.png" alt=""></p>
+
+<h4>
+<a id="3设置容器为flexbox布局且容器内子元素垂直排列子元素默认会撑满与子元素堆叠方向垂直方向上的空间代码如下" class="anchor" href="#3%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E4%B8%BAflexbox%E5%B8%83%E5%B1%80%E4%B8%94%E5%AE%B9%E5%99%A8%E5%86%85%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E6%8E%92%E5%88%97%E5%AD%90%E5%85%83%E7%B4%A0%E9%BB%98%E8%AE%A4%E4%BC%9A%E6%92%91%E6%BB%A1%E4%B8%8E%E5%AD%90%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E5%9E%82%E7%9B%B4%E6%96%B9%E5%90%91%E4%B8%8A%E7%9A%84%E7%A9%BA%E9%97%B4%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.设置容器为flexbox布局，且容器内子元素垂直排列(子元素默认会撑满与子元素堆叠方向垂直方向上的空间)，代码如下:</h4>
+
+<pre><code>  &lt;div class="vertical demo-container"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>{}<img src="/content/images/2015/03/3.png" alt=""></p>
+
+<h4>
+<a id="4inline-vertical-设置容器布局环境为inline-flex同时子元素垂直排列在与子元素堆叠方向垂直的方向上子元素默认撑满父容器" class="anchor" href="#4inline-vertical-%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAinline-flex%E5%90%8C%E6%97%B6%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E6%8E%92%E5%88%97%E5%9C%A8%E4%B8%8E%E5%AD%90%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E5%9E%82%E7%9B%B4%E7%9A%84%E6%96%B9%E5%90%91%E4%B8%8A%E5%AD%90%E5%85%83%E7%B4%A0%E9%BB%98%E8%AE%A4%E6%92%91%E6%BB%A1%E7%88%B6%E5%AE%B9%E5%99%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>4、.inline-vertical, 设置容器布局环境为inline-flex,同时子元素垂直排列(在与子元素堆叠方向垂直的方向上，子元素默认撑满父容器)。</h4>
+
+<pre><code>  &lt;div class="inline-vertical demo-container"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/4.png" alt=""></p>
+
+<h4>
+<a id="5在1的基础上为容器内子元素two添加flex-1这样two会自动在元素堆叠方向上填充父容器水平方向上one和three之外的剩余空间代码如下" class="anchor" href="#5%E5%9C%A81%E7%9A%84%E5%9F%BA%E7%A1%80%E4%B8%8A%E4%B8%BA%E5%AE%B9%E5%99%A8%E5%86%85%E5%AD%90%E5%85%83%E7%B4%A0two%E6%B7%BB%E5%8A%A0flex-1%E8%BF%99%E6%A0%B7two%E4%BC%9A%E8%87%AA%E5%8A%A8%E5%9C%A8%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E4%B8%8A%E5%A1%AB%E5%85%85%E7%88%B6%E5%AE%B9%E5%99%A8%E6%B0%B4%E5%B9%B3%E6%96%B9%E5%90%91%E4%B8%8Aone%E5%92%8Cthree%E4%B9%8B%E5%A4%96%E7%9A%84%E5%89%A9%E4%BD%99%E7%A9%BA%E9%97%B4%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.在1的基础上，为容器内子元素Two添加.flex-1，这样，Two会自动在元素堆叠方向上填充父容器水平方向上One和Three之外的剩余空间，代码如下：</h4>
+
+<pre><code>&lt;div class="horizontal demo-container"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two flex-1"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>效果为
+{}<img src="/content/images/2015/02/2.png" alt="alt"></p>
+
+<h4>
+<a id="6在3的基础上设置容器高度为200px为容器内子元素two添加flex-1这样two会自动在元素堆叠方向上填满one和three之外的剩余空间代码如下" class="anchor" href="#6%E5%9C%A83%E7%9A%84%E5%9F%BA%E7%A1%80%E4%B8%8A%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E9%AB%98%E5%BA%A6%E4%B8%BA200px%E4%B8%BA%E5%AE%B9%E5%99%A8%E5%86%85%E5%AD%90%E5%85%83%E7%B4%A0two%E6%B7%BB%E5%8A%A0flex-1%E8%BF%99%E6%A0%B7two%E4%BC%9A%E8%87%AA%E5%8A%A8%E5%9C%A8%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E4%B8%8A%E5%A1%AB%E6%BB%A1one%E5%92%8Cthree%E4%B9%8B%E5%A4%96%E7%9A%84%E5%89%A9%E4%BD%99%E7%A9%BA%E9%97%B4%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>6、在3的基础上，设置容器高度为200px，为容器内子元素Two添加.flex-1，这样TWO会自动在元素堆叠方向上填满One和Three之外的剩余空间，代码如下：</h4>
+
+<pre><code>  &lt;div class="vertical demo-container height-200"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="flex-1 two"&gt;Two flex-1&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/5.png" alt=""></p>
+
+<h4>
+<a id="7在1的基础上分别为onetwothree添加flex3flex2-flex1代码如下" class="anchor" href="#7%E5%9C%A81%E7%9A%84%E5%9F%BA%E7%A1%80%E4%B8%8A%E5%88%86%E5%88%AB%E4%B8%BAonetwothree%E6%B7%BB%E5%8A%A0flex3flex2-flex1%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>7、在1的基础上，分别为One,Two,Three添加.flex3,.flex2 .flex1,代码如下：</h4>
+
+<pre><code>  &lt;div class="horizontal demo-container"&gt;
+    &lt;div class="flex-3 one"&gt;One flex-3&lt;/div&gt;
+    &lt;div class="flex-2 two"&gt;Two flex-2&lt;/div&gt;
+    &lt;div class="flex-1 three"&gt;Three flex-1&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/6.png" alt=""></p>
+
+<h4>
+<a id="8在3的基础上设置容器高度为200px且为子元素分别为添加flex-3-flex-2和flex-1代码如下" class="anchor" href="#8%E5%9C%A83%E7%9A%84%E5%9F%BA%E7%A1%80%E4%B8%8A%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E9%AB%98%E5%BA%A6%E4%B8%BA200px%E4%B8%94%E4%B8%BA%E5%AD%90%E5%85%83%E7%B4%A0%E5%88%86%E5%88%AB%E4%B8%BA%E6%B7%BB%E5%8A%A0flex-3-flex-2%E5%92%8Cflex-1%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>8、在3的基础上，设置容器高度为200px，且为子元素分别为添加.flex-3, .flex-2和.flex-1,代码如下：</h4>
+
+<pre><code>  &lt;div class="vertical demo-container height-200"&gt;
+    &lt;div class="flex-3 one"&gt;One flex-3&lt;/div&gt;
+    &lt;div class="flex-2 two"&gt;Two flex-2&lt;/div&gt;
+    &lt;div class="flex-1 three"&gt;Three flex-1&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/1.png" alt=""></p>
+
+<h4>
+<a id="9horizontal-start置高为200px容器布局环境为flex子元素水平排列且在与子元素堆叠方向所垂直的方向上靠近开始位置默认为撑满代码如下" class="anchor" href="#9horizontal-start%E7%BD%AE%E9%AB%98%E4%B8%BA200px%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E6%8E%92%E5%88%97%E4%B8%94%E5%9C%A8%E4%B8%8E%E5%AD%90%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E6%89%80%E5%9E%82%E7%9B%B4%E7%9A%84%E6%96%B9%E5%90%91%E4%B8%8A%E9%9D%A0%E8%BF%91%E5%BC%80%E5%A7%8B%E4%BD%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E4%B8%BA%E6%92%91%E6%BB%A1%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>9、.horizontal, .start置高为200px容器布局环境为flex，子元素水平排列，且在与子元素堆叠方向所垂直的方向上，靠近开始位置（默认为撑满）。代码如下：</h4>
+
+<pre><code>  &lt;div class="horizontal start demo-container height-200"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/2-1.png" alt=""></p>
+
+<h4>
+<a id="10horizontalcenter-设置高为200px容器布局环境为flex子元素水平排列且在与子元素堆叠方向所垂直的方向上居中代码如下" class="anchor" href="#10horizontalcenter-%E8%AE%BE%E7%BD%AE%E9%AB%98%E4%B8%BA200px%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E6%8E%92%E5%88%97%E4%B8%94%E5%9C%A8%E4%B8%8E%E5%AD%90%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E6%89%80%E5%9E%82%E7%9B%B4%E7%9A%84%E6%96%B9%E5%90%91%E4%B8%8A%E5%B1%85%E4%B8%AD%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>10、.horizontal，.center 设置高为200px容器布局环境为flex，子元素水平排列，且在与子元素堆叠方向所垂直的方向上，居中。代码如下：</h4>
+
+<pre><code>  &lt;div class="horizontal center demo-container height-200"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/3-1.png" alt=""></p>
+
+<h4>
+<a id="11horizontal-end-设置高为200px容器布局环境为flex子元素水平排列且在与子元素堆叠所垂直方向上靠近尾部代码如下" class="anchor" href="#11horizontal-end-%E8%AE%BE%E7%BD%AE%E9%AB%98%E4%B8%BA200px%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E6%8E%92%E5%88%97%E4%B8%94%E5%9C%A8%E4%B8%8E%E5%AD%90%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%89%80%E5%9E%82%E7%9B%B4%E6%96%B9%E5%90%91%E4%B8%8A%E9%9D%A0%E8%BF%91%E5%B0%BE%E9%83%A8%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>11、.horizontal, .end 设置高为200px容器布局环境为flex，子元素水平排列，且在与子元素堆叠所垂直方向上，靠近尾部。代码如下：</h4>
+
+<pre><code> &lt;div class="horizontal end demo-container height-200"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/4-1.png" alt=""></p>
+
+<h4>
+<a id="12horizontal-baseline-设置高为200px容器布局环境为flex子元素水平排列padding不同且在子元素堆叠所垂直方向上以bseline对齐代码如下" class="anchor" href="#12horizontal-baseline-%E8%AE%BE%E7%BD%AE%E9%AB%98%E4%B8%BA200px%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E6%8E%92%E5%88%97padding%E4%B8%8D%E5%90%8C%E4%B8%94%E5%9C%A8%E5%AD%90%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%89%80%E5%9E%82%E7%9B%B4%E6%96%B9%E5%90%91%E4%B8%8A%E4%BB%A5bseline%E5%AF%B9%E9%BD%90%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>12、.horizontal, .baseline 设置高为200px容器布局环境为flex，子元素水平排列(padding不同)，且在子元素堆叠所垂直方向上，以bseline对齐。代码如下：</h4>
+
+<pre><code>  &lt;div class="horizontal baseline demo-container height-200"&gt;
+    &lt;div class="one" style="padding: 10px"&gt;One&lt;/div&gt;
+    &lt;div class="two" style="padding: 20px"&gt;Two&lt;/div&gt;
+    &lt;div class="three" style="padding: 30px"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/5-1.png" alt=""></p>
+
+<h4>
+<a id="13vertical-start-设置容器布局环境为flex子元素垂直排列且在与子元素堆叠方向所垂直的方向上子元素靠近开始位置默认撑满代码如下" class="anchor" href="#13vertical-start-%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E6%8E%92%E5%88%97%E4%B8%94%E5%9C%A8%E4%B8%8E%E5%AD%90%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E6%89%80%E5%9E%82%E7%9B%B4%E7%9A%84%E6%96%B9%E5%90%91%E4%B8%8A%E5%AD%90%E5%85%83%E7%B4%A0%E9%9D%A0%E8%BF%91%E5%BC%80%E5%A7%8B%E4%BD%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%92%91%E6%BB%A1%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>13、.vertical, .start, 设置容器布局环境为flex，子元素垂直排列,且在与子元素堆叠方向所垂直的方向上，子元素靠近开始位置(默认撑满),代码如下：</h4>
+
+<pre><code>  &lt;div class="vertical start demo-container"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/6-1.png" alt=""></p>
+
+<h4>
+<a id="14vertical-center-设置容器布局环境为flex子元素垂直排列且在与子元素堆叠方向所垂直的方向上子元素居中代码如下" class="anchor" href="#14vertical-center-%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E6%8E%92%E5%88%97%E4%B8%94%E5%9C%A8%E4%B8%8E%E5%AD%90%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E6%89%80%E5%9E%82%E7%9B%B4%E7%9A%84%E6%96%B9%E5%90%91%E4%B8%8A%E5%AD%90%E5%85%83%E7%B4%A0%E5%B1%85%E4%B8%AD%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>14、.vertical, .center, 设置容器布局环境为flex，子元素垂直排列，且在与子元素堆叠方向所垂直的方向上，子元素居中。代码如下：</h4>
+
+<pre><code>  &lt;div class="vertical center demo-container"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-26-19.png" alt=""></p>
+
+<h4>
+<a id="15vertical-end-设置容器布局环境为flex子元素垂直排列且在与子元素堆叠方向所垂直的方向上子元素靠近尾部代码如下" class="anchor" href="#15vertical-end-%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E6%8E%92%E5%88%97%E4%B8%94%E5%9C%A8%E4%B8%8E%E5%AD%90%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E6%89%80%E5%9E%82%E7%9B%B4%E7%9A%84%E6%96%B9%E5%90%91%E4%B8%8A%E5%AD%90%E5%85%83%E7%B4%A0%E9%9D%A0%E8%BF%91%E5%B0%BE%E9%83%A8%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>15、.vertical, .end, 设置容器布局环境为flex，子元素垂直排列，且在与子元素堆叠方向所垂直的方向上，子元素靠近尾部。代码如下：</h4>
+
+<pre><code>  &lt;div class="vertical end demo-container"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-25-22.png" alt=""></p>
+
+<h4>
+<a id="16horizontal-center-justify设置容器布局环境为flex子元素垂直排列且在元素堆叠方向上子元素居中默认在开始位置代码如下" class="anchor" href="#16horizontal-center-justify%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E6%8E%92%E5%88%97%E4%B8%94%E5%9C%A8%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E4%B8%8A%E5%AD%90%E5%85%83%E7%B4%A0%E5%B1%85%E4%B8%AD%E9%BB%98%E8%AE%A4%E5%9C%A8%E5%BC%80%E5%A7%8B%E4%BD%8D%E7%BD%AE%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>16、.horizontal, .center-justify,设置容器布局环境为flex，子元素垂直排列，且在元素堆叠方向上，子元素居中。(默认在开始位置)代码如下：</h4>
+
+<pre><code>  &lt;div class="horizontal center-justify demo-container"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果为：
+{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-32-53.png" alt=""></p>
+
+<h4>
+<a id="17horizontalend-justify设置容器布局环境为flex子元素垂直排列且在元素堆叠方向上子元素靠近尾部代码如下" class="anchor" href="#17horizontalend-justify%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E6%8E%92%E5%88%97%E4%B8%94%E5%9C%A8%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E4%B8%8A%E5%AD%90%E5%85%83%E7%B4%A0%E9%9D%A0%E8%BF%91%E5%B0%BE%E9%83%A8%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>17、.horizontal，.end-justify,设置容器布局环境为flex，子元素垂直排列，且在元素堆叠方向上，子元素靠近尾部。代码如下：</h4>
+
+<pre><code>  &lt;div class="horizontal end-justify demo-container"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-35-24.png" alt=""></p>
+
+<h4>
+<a id="18horizontal-around-justify设置容器布局环境为flex子元素垂直排列且在元素堆叠方向上子元素around排列代码如下" class="anchor" href="#18horizontal-around-justify%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E6%8E%92%E5%88%97%E4%B8%94%E5%9C%A8%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E4%B8%8A%E5%AD%90%E5%85%83%E7%B4%A0around%E6%8E%92%E5%88%97%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>18、horizontal around-justify,设置容器布局环境为flex，子元素垂直排列，且在元素堆叠方向上，子元素around排列。代码如下：</h4>
+
+<pre><code> &lt;div class="horizontal around-justify demo-container"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-36-50.png" alt=""></p>
+
+<h4>
+<a id="19horizontaljustify设置容器布局环境为flex子元素垂直排列且在元素堆叠方向上子元素两端对齐排列注意demo-container是有内边距的代码如下" class="anchor" href="#19horizontaljustify%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E6%8E%92%E5%88%97%E4%B8%94%E5%9C%A8%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E4%B8%8A%E5%AD%90%E5%85%83%E7%B4%A0%E4%B8%A4%E7%AB%AF%E5%AF%B9%E9%BD%90%E6%8E%92%E5%88%97%E6%B3%A8%E6%84%8Fdemo-container%E6%98%AF%E6%9C%89%E5%86%85%E8%BE%B9%E8%B7%9D%E7%9A%84%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>19、.horizontal,.justify,设置容器布局环境为flex，子元素垂直排列，且在元素堆叠方向上，子元素两端对齐排列（注意.demo-container是有内边距的）。代码如下：</h4>
+
+<pre><code>  &lt;div class="horizontal justify demo-container"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-37-03.png" alt=""></p>
+
+<h4>
+<a id="20horizontal-justify-child-self-start-self-center-self-end-height-200设置高度为200px的容器布局环境为flex子元素分别为self-startself-centerself-end默认撑满代码如下" class="anchor" href="#20horizontal-justify-child-self-start-self-center-self-end-height-200%E8%AE%BE%E7%BD%AE%E9%AB%98%E5%BA%A6%E4%B8%BA200px%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E5%88%86%E5%88%AB%E4%B8%BAself-startself-centerself-end%E9%BB%98%E8%AE%A4%E6%92%91%E6%BB%A1%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>20、.horizontal, .justify (child .self-start, .self-center, .self-end) height-200,设置高度为200px的容器布局环境为flex,子元素分别为self-start,self-center,self-end.(默认撑满),代码如下：</h4>
+
+<pre><code>  &lt;div class="horizontal justify demo-container height-200"&gt;
+    &lt;div class="one self-start"&gt;One self-start&lt;/div&gt;
+    &lt;div class="two self-center"&gt;Two self-center&lt;/div&gt;
+    &lt;div class="three self-end"&gt;Three self-end&lt;/div&gt;
+    &lt;div class="one"&gt;default&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-37-14.png" alt=""></p>
+
+<h4>
+<a id="21vertical-center-justify-设置高度为200px容器布局环境为flex子元素垂直排列且在元素堆叠方向上居中默认在开始位置代码如下" class="anchor" href="#21vertical-center-justify-%E8%AE%BE%E7%BD%AE%E9%AB%98%E5%BA%A6%E4%B8%BA200px%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E6%8E%92%E5%88%97%E4%B8%94%E5%9C%A8%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E4%B8%8A%E5%B1%85%E4%B8%AD%E9%BB%98%E8%AE%A4%E5%9C%A8%E5%BC%80%E5%A7%8B%E4%BD%8D%E7%BD%AE%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>21、.vertical, .center-justify, 设置高度为200px容器布局环境为flex，子元素垂直排列，且在元素堆叠方向上居中（默认在开始位置）,代码如下：</h4>
+
+<pre><code>&lt;div class="vertical center-justify demo-container height-200"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：</p>
+
+<p>{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-46-44.png" alt=""></p>
+
+<h4>
+<a id="22verticalend-justify设置高度为200px容器布局环境为flex子元素垂直排列且在元素堆叠方向上靠近尾部代码如下" class="anchor" href="#22verticalend-justify%E8%AE%BE%E7%BD%AE%E9%AB%98%E5%BA%A6%E4%B8%BA200px%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E6%8E%92%E5%88%97%E4%B8%94%E5%9C%A8%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E4%B8%8A%E9%9D%A0%E8%BF%91%E5%B0%BE%E9%83%A8%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>22、.vertical,.end-justify,设置高度为200px容器布局环境为flex，子元素垂直排列，且在元素堆叠方向上靠近尾部。代码如下：</h4>
+
+<pre><code>  &lt;div class="vertical end-justify demo-container height-200"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-46-54.png" alt=""></p>
+
+<h4>
+<a id="23vertical-around-justify-设置高度为200px容器布局环境为flex子元素垂直排列且在元素堆叠方向上around排列代码如下" class="anchor" href="#23vertical-around-justify-%E8%AE%BE%E7%BD%AE%E9%AB%98%E5%BA%A6%E4%B8%BA200px%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E6%8E%92%E5%88%97%E4%B8%94%E5%9C%A8%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E4%B8%8Aaround%E6%8E%92%E5%88%97%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>23、.vertical, .around-justify 设置高度为200px容器布局环境为flex，子元素垂直排列，且在元素堆叠方向上around排列。代码如下：</h4>
+
+<pre><code>  &lt;div class="vertical around-justify demo-container height-200"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-47-00.png" alt=""></p>
+
+<h4>
+<a id="24vertical-justify-设置高度为200px容器布局环境为flex子元素垂直排列且在元素堆叠方向上两端对齐" class="anchor" href="#24vertical-justify-%E8%AE%BE%E7%BD%AE%E9%AB%98%E5%BA%A6%E4%B8%BA200px%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E6%8E%92%E5%88%97%E4%B8%94%E5%9C%A8%E5%85%83%E7%B4%A0%E5%A0%86%E5%8F%A0%E6%96%B9%E5%90%91%E4%B8%8A%E4%B8%A4%E7%AB%AF%E5%AF%B9%E9%BD%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>24、.vertical, .justify, 设置高度为200px容器布局环境为flex，子元素垂直排列，且在元素堆叠方向上两端对齐。</h4>
+
+<pre><code>  &lt;div class="vertical justify demo-container height-200"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-47-08.png" alt=""></p>
+
+<h4>
+<a id="25verticaljustify-child-self-start-self-center-self-end-设置高度为200px的容器布局环境为flex子元素垂直排列分别为self-startself-center-self-end默认撑满代码如下" class="anchor" href="#25verticaljustify-child-self-start-self-center-self-end-%E8%AE%BE%E7%BD%AE%E9%AB%98%E5%BA%A6%E4%B8%BA200px%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E6%8E%92%E5%88%97%E5%88%86%E5%88%AB%E4%B8%BAself-startself-center-self-end%E9%BB%98%E8%AE%A4%E6%92%91%E6%BB%A1%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>25、.vertical，justify (child .self-start, .self-center, .self-end) 设置高度为200px的容器布局环境为flex，子元素垂直排列，分别为self-start,self-center, self-end(默认撑满)代码如下：</h4>
+
+<pre><code>&lt;div class="vertical justify demo-container height-200"&gt;
+    &lt;div class="one self-start"&gt;One self-start&lt;/div&gt;
+    &lt;div class="two self-center"&gt;Two self-center&lt;/div&gt;
+    &lt;div class="three self-end"&gt;Three self-end&lt;/div&gt;
+    &lt;div class="one"&gt;default&lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-47-15.png" alt=""></p>
+
+<h4>
+<a id="26horizontal-wrap-设置宽度为200px的容器的布局环境为flex-子元素水平排列子元素超过父元素长度时包裹代码如下" class="anchor" href="#26horizontal-wrap-%E8%AE%BE%E7%BD%AE%E5%AE%BD%E5%BA%A6%E4%B8%BA200px%E7%9A%84%E5%AE%B9%E5%99%A8%E7%9A%84%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%BAflex-%E5%AD%90%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E6%8E%92%E5%88%97%E5%AD%90%E5%85%83%E7%B4%A0%E8%B6%85%E8%BF%87%E7%88%B6%E5%85%83%E7%B4%A0%E9%95%BF%E5%BA%A6%E6%97%B6%E5%8C%85%E8%A3%B9%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>26、.horizontal, .wrap, 设置宽度为200px的容器的布局环境为flex, 子元素水平排列,子元素超过父元素长度时包裹。代码如下：</h4>
+
+<pre><code>  &lt;div class="horizontal wrap demo-container" style="width: 200px;"&gt;
+    &lt;div class="one" style="100px"&gt;One&lt;/div&gt;
+    &lt;div class="two" style="80px"&gt;Two&lt;/div&gt;
+    &lt;div class="three" style="30px"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-47-25.png" alt=""></p>
+
+<h4>
+<a id="27horizontalreverse-设置容器为flex布局环境子元素水平排列且镜像" class="anchor" href="#27horizontalreverse-%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E4%B8%BAflex%E5%B8%83%E5%B1%80%E7%8E%AF%E5%A2%83%E5%AD%90%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E6%8E%92%E5%88%97%E4%B8%94%E9%95%9C%E5%83%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>27、.horizontal，.reverse, 设置容器为flex布局环境，子元素水平排列，且镜像。</h4>
+
+<pre><code>  &lt;div class="horizontal reverse demo-container"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;Three&lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<p>效果图如下：
+{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-47-41.png" alt=""></p>
+
+<p>最后介绍下Sass占位符%,例如以下Sass代码：</p>
+
+<pre><code>%public  
+  border: 1px solid red
+  font-size: 18px
+  line-height: 1.8
+.main    
+  @extend %public
+  display: inline-block
+  margin: 10px                 
+.sidebar    
+  @extend %public    
+  padding: 9px                        
+.footer    
+  @extend %public    
+  padding: 18px
+ul &gt; .test1    
+  @extend %public    
+  margin: 0    
+  list-style: none
+</code></pre>
+
+<p>编译之后的结果为：</p>
+
+<pre><code>.main,
+.sidebar,
+.footer,
+ul &gt; .test1 {    
+  border: 1px solid red;    
+  font-size: 18px;    
+  line-height: 1.8;
+}             
+.main {    
+  display: inline-block;    
+  margin: 10px;
+}
+.sidebar{    
+  padding: 9px;
+}
+.footer {    
+  padding: 18px;
+}
+ul &gt; .test1 {    
+  margin: 0;    
+  list-style: none;
+}
+</code></pre>
+
+<p>%占位符在编译之后并不存在，这个功能是非常强大的，既可以保证你Sass代码良好的可读性，又能保证编译出的CSS代码可以最大化地实现代码的可复用性，减少重复代码的出现。利用这个特性，可以非常方便地写我们的布局代码，减少多余的选择器。在1 - 27中所有的类都有其对应的占位符，例如.horizontal对应的占位符为%horizontal，下面基于占位符的<a href="https://github.com/extend" class="user-mention">@extend</a>来实现一个导航：</p>
+
+<h4>
+<a id="28extend-horizontal-extend-justify父容器extend-horizontalextend-justify代码如下" class="anchor" href="#28extend-horizontal-extend-justify%E7%88%B6%E5%AE%B9%E5%99%A8extend-horizontalextend-justify%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>28、<a href="https://github.com/extend" class="user-mention">@extend</a> %horizontal, <a href="https://github.com/extend" class="user-mention">@extend</a> %justify,父容器<a href="https://github.com/extend" class="user-mention">@extend</a> %horizontal，<a href="https://github.com/extend" class="user-mention">@extend</a> %justify，代码如下：</h4>
+
+<pre><code>  &lt;ul class="nav"&gt;
+    &lt;li&gt;nav1&lt;/li&gt;
+    &lt;li&gt;nav2&lt;/li&gt;
+    &lt;li&gt;nav3&lt;/li&gt;
+    &lt;li&gt;nav4&lt;/li&gt;
+    &lt;li&gt;nav5&lt;/li&gt;
+  &lt;/ul&gt;
+
+  //sass 内容
+  .nav
+    @extend %horizontal
+    @extend %justify
+    margin: 0
+    padding: 3px 25px
+    background-color: #ccc
+    border-radius: 5px
+    list-style: none
+
+    &gt; li
+        padding: 5px 20px
+        border-radius: 3px
+        color: #fff
+        +bg-variant(green)
+</code></pre>
+
+<p>效果如下：
+{}<img src="/content/images/2015/03/Screen-Shot-2015-03-17-at-02-47-48.png" alt=""></p>
+
+<p>在28中很容易就实现一个导航栏，利用no-layout.sass中所有flex布局相关的占位符，可以轻松实现绝大多数的布局，而且可以最大化地复用代码。</p>
+
+<p>相关推荐：<a href="http://blog.rainjay.wang/no-layout-sasss-common/">no-layout-sass使用介绍（2）——常用Mixins和功能</a></p>
+        </section>
+
+        <footer>
+          no-layout-sass介绍一 is maintained by <a href="https://github.com/rainjay">rainjay</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
