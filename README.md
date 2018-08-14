@@ -1,2 +1,2 @@
 # blog
-this is my blog, Please visit issues for details!
+This is my blog, please visit issues for details!
